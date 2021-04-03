@@ -1,9 +1,23 @@
 from flask import Flask, render_template
+import mysql.connector
+
+
+
+
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-   return render_template("index.html")
+   mydb = mysql.connector.connect(
+   host="localhost",
+   user="root",
+   password="",
+   database="test"
+   )
+   mycursor = mydb.cursor()
+   mycursor.execute("SELECT * FROM tb1")
+   myresult = mycursor.fetchall()
+   return render_template("index.html", myresult=myresult)
    # return "hello world"
 
 @app.route('/biblerc')

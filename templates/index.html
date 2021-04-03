@@ -8,6 +8,9 @@
 <!-- Content will go here -->
 <h1>Hello I am from HTML</h1>
 <a href="/biblerc">go to bible resource</a>
+{% for each in myresult %}
+<h2>This is from database: {{each[1]}}</h2>
+{% endfor %}
 
 </body>
 </html>
